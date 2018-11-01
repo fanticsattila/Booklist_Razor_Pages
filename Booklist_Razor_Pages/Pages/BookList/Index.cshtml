@@ -4,5 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>@Model.someData</h2>
+<h2>Book List</h2>
 
+<br/>
+
+<a asp-page="Create" class="btn btn-primary">Create new book</a>
+
+@if (Model.Books.Count() > 0)
+{
+    <div>Books available.</div>
+}
+else
+{
+    <div>No books in database.</div>
+}
