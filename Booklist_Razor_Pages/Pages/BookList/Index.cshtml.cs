@@ -1,4 +1,5 @@
 ﻿using Booklist_Razor_Pages.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace Booklist_Razor_Pages.Pages.BookList
     {
         private readonly ApplicationDbContext _db;
         public IEnumerable<Book> Books { get; set; }
+
+        [TempData]
+        public string Message { get; set; }
 
         public IndexModel(ApplicationDbContext db)
         {
