@@ -8,5 +8,7 @@ namespace Booklist_Razor_Pages.Model
         {
 
         }
+
+        public DbSet<Book> Books { get; set; }
     }
 }
