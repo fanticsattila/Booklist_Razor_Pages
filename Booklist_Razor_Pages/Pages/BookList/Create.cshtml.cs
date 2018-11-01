@@ -34,7 +34,10 @@ namespace Booklist_Razor_Pages.Pages.BookList
             {
                 return Page();
             }
-
+            if (_db.Books.Count() > 0)
+                Book.Id = _db.Books.Max(p => p.Id) + 1;
+            else
+                Book.Id = 1;
             _db.Books.Add(Book);
             await _db.SaveChangesAsync();
 
