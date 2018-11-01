@@ -4,11 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+<br />
 <h2>Book List</h2>
+<br />
 
-<br/>
-
-@if(Model.Message!=null)
+@if (Model.Message != null)
 {
     <div class="alert alert-info alert-dismissable" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="close">
@@ -16,25 +16,26 @@
         </button>
         @Model.Message
     </div>
+
 }
 
 
-<a asp-page="Create" class="btn btn-primary">Create new book</a>
+
+<a asp-page="Create" class="btn btn-primary">Create New Book</a>
 <form method="post">
     @if (Model.Books.Count() > 0)
     {
-        <br />
-        <br />
+        <br /><br />
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(b => b.Books.FirstOrDefault().Name)
+                    @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(b => b.Books.FirstOrDefault().Author)
+                    @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(b => b.Books.FirstOrDefault().ISBN)
+                    @Html.DisplayNameFor(m => m.Books.FirstOrDefault().ISBN)
                 </th>
                 <th></th>
                 <th></th>
@@ -43,24 +44,27 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(b => item.Name)
+                        @Html.DisplayFor(m => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(b => item.Author)
+                        @Html.DisplayFor(m => item.Author)
                     </td>
                     <td>
-                        @Html.DisplayFor(b => item.ISBN)
+                        @Html.DisplayFor(m => item.ISBN)
                     </td>
                     <td>
-                        <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</button> 
+                        <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</button>
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Edit</a>
                     </td>
-                    <td></td>
                 </tr>
+
             }
         </table>
+        <br /><br />
+
     }
     else
     {
-        <div>No books in database.</div>
+        <div>No books in Database.</div>
     }
 </form>

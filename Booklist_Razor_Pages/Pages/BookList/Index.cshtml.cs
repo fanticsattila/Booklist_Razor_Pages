@@ -25,9 +25,9 @@ namespace Booklist_Razor_Pages.Pages.BookList
             Books= await _db.Books.ToListAsync();
         }
 
-        public async Task<IActionResult> OnPostDelete(int id)
+        public async Task<IActionResult> OnPostDelete(int Id)
         {
-            Book book = await _db.Books.FindAsync(id);
+            Book book = await _db.Books.FindAsync(Id);
             _db.Books.Remove(book);
             await _db.SaveChangesAsync();
 
