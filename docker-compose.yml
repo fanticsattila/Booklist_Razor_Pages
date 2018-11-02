@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  postgresqlserver:
+    container_name: postgresqlserver
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: pgp4ssw0rd
+    build:
+      context: Postgres/.
+      dockerfile: Dockerfile
+    volumes:
+    - pg-datavolume:/var/lib/postgresql
+
+  booklist_razor_pages:
+    image: booklist_razor_pages
+    ports:
+    - "8002:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+    - postgresqlserver
+
+volumes:
+  pg-datavolume:
